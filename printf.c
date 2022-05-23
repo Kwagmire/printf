@@ -34,6 +34,8 @@ int choose_spec(char c, va_list ap, unsigned int byte)
 	else if (c == 's')
 	{
 		t0 = va_arg(ap, char *);
+		if (t0 == NULL)
+			t0 = "(null)";
 		while (*t0)
 		{
 			_putchar(*t0);
