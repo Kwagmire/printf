@@ -48,6 +48,12 @@ int choose_spec(char c, va_list ap, unsigned int byte)
 		_putchar('%');
 		byte++;
 	}
+	else
+	{
+		_putchar('%');
+		_putchar(c);
+		byte += 2;
+	}
 
 	return (byte);
 }
@@ -70,8 +76,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			byte = choose_spec(format[i + 1], ap, byte);
-			i += 2;
+			if (format[i + 1] != '\0')
+			{
+				byte = choose_spec(format[i + 1], ap, byte);
+				i += 2;
+			}
+			else
+				i++;
 		}
 		else
 		{
