@@ -1,61 +1,33 @@
 #include "main.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
 
 /**
- * _putchar - print to standard output
- * @c: what to print
- *
- * Return: 0 or -1
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-/**
- * choose_spec - perform specific commands
- *		 based on the specifier
+ * check_conversion - perform specific commands
+ *		      based on the specifier
  * @c: the specifier
  * @ap: the variable argument list
- * @byte: the number of bytes printed before the function
  *
- * Return: the number of bytes printed after the function runs
+ * Return: the number of bytes printed
  */
-int choose_spec(char c, va_list ap, unsigned int byte)
+int check_conversion(char c, va_list ap)
 {
-	char *t0;
+	int n = 0;
 
 	if (c == 'c')
-	{
-		_putchar(va_arg(ap, int));
-		byte++;
-	}
+		n += print_char(ap);
 	else if (c == 's')
-	{
-		t0 = va_arg(ap, char *);
-		if (t0 == NULL)
-			t0 = "(null)";
-		while (*t0)
-		{
-			_putchar(*t0);
-			byte++;
-			t0++;
-		}
-	}
+		n += print_str(ap);
 	else if (c == '%')
-	{
-		_putchar('%');
-		byte++;
-	}
-	else
+		n += _putchar('%');
+	else if (c == 'd' || c == 'i')
+		n += print_int(ap);
+
+	if (n <= 0)
 	{
 		_putchar('%');
 		_putchar(c);
-		byte += 2;
+		n += 2;
 	}
-
-	return (byte);
+	return (n);
 }
 /**
  * _printf - print formatted output
@@ -78,7 +50,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] != '\0')
 			{
-				byte = choose_spec(format[i + 1], ap, byte);
+				byte += check_conversion(format[i + 1], ap);
 				i += 2;
 			}
 			else
@@ -89,9 +61,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(format[i]);
+			byte += _putchar(format[i]);
 			i++;
-			byte++;
 		}
 	}
 	va_end(ap);
