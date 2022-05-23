@@ -84,7 +84,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				va_end(ap);
-				return (byte);
+				return (-1);
 			}
 		}
 		else
