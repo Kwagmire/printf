@@ -14,7 +14,7 @@ int _putchar(char c)
  * print_number - print a number
  * @num: the number
  *
- * Return: number of characters
+ * Return: number of characters printed
  */
 int print_number(long num)
 {
@@ -23,5 +23,20 @@ int print_number(long num)
 	if (num / 10 > 0)
 		n += print_number(num / 10);
 	n += _putchar((num % 10) + '0');
+	return (n);
+}
+/**
+ * print_bin - print a number in binary
+ * @num: the number
+ *
+ * Return: number of characters printed
+ */
+int print_bin(unsigned int num)
+{
+	int n = 0;
+
+	if (num / 2 > 0)
+		n += print_bin(n / 2);
+	n += _putchar((num % 2) + '0');
 	return (n);
 }

@@ -20,6 +20,8 @@ int check_conversion(char c, va_list ap)
 		n += _putchar('%');
 	else if (c == 'd' || c == 'i')
 		n += print_int(ap);
+	else if (c == 'b')
+		n += print_binary(ap);
 	else
 	{
 		_putchar('%');
@@ -67,79 +69,4 @@ int _printf(const char *format, ...)
 	va_end(ap);
 
 	return (byte);
-}
-int main(void)
-{
-	int m;
-	
-	m = _printf("Let's print a simple sentence.\n");
-	_printf("%d\n", m);
-	m = printf("Let's print a simple sentence.\n");
-	printf("%d\n", m);
-	m = _printf("%c", 'S');
-	_printf("%d\n", m);
-	m = printf("%c", 'S');
-	printf("%d\n", m);
-	m = _printf("A char inside a sentence: %c. Did it work?\n", 'F');
-	_printf("%d\n", m);
-	m = printf("A char inside a sentence: %c. Did it work?\n", 'F');
-	printf("%d\n", m);
-	m = _printf("Let'see if the cast is correctly done: %c. Did it work?\n", 48);
-	_printf("%d\n", m);
-	m = printf("Let'see if the cast is correctly done: %c. Did it work?\n", 48);
-	printf("%d\n", m);
-	m = _printf("%s", "This sentence is retrieved from va_args!\n");
-	_printf("%d\n", m);
-	m = printf("%s", "This sentence is retrieved from va_args!\n");
-	printf("%d\n", m);
-	m = _printf("Complete the sentence: You %s nothing, Jon Snow.\n", "know");
-	_printf("%d\n", m);
-	m = printf("Complete the sentence: You %s nothing, Jon Snow.\n", "know");
-	printf("%d\n", m);
-	m = _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-	_printf("%d\n", m);
-	m = printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-	printf("%d\n", m);
-	m = _printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
-	_printf("%d\n", m);
-	m = printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
-	printf("%d\n", m);
-	m = _printf("%%");
-	_printf("%d\n", m);
-	m = printf("%%");
-	printf("%d\n", m);
-	m = _printf("Should print a single percent sign: %%\n");
-	_printf("%d\n", m);
-	m = printf("Should print a single percent sign: %%\n");
-	printf("%d\n", m);
-	m = _printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Please wait", '\n');
-	_printf("%d\n", m);
-	m = printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Please wait", '\n');
-	printf("%d\n", m);
-	m = _printf("css%ccs%scscscs", 'T', "Test");
-	_printf("%d\n", m);
-	m = printf("css%ccs%scscscs", 'T', "Test");
-	printf("%d\n", m);
-	m = _printf(NULL);
-	_printf("%d\n", m);
-	m = printf(NULL);
-	printf("%d\n", m);
-	m = _printf("%c", '\0');
-	_printf("%d\n", m);
-	m = printf("%c", '\0');
-	printf("%d\n", m);
-	m = _printf("%");
-	_printf("%d\n", m);
-	m = printf("%");
-	printf("%d\n", m);
-	m = _printf("%!\n");
-	_printf("%d\n", m);
-	m = printf("%!\n");
-	printf("%d\n", m);
-	m = _printf("%K\n");
-	_printf("%d\n", m);
-	m = printf("%K\n");
-	printf("%d\n", m);
-	
-	return (0);
 }

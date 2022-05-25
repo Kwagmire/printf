@@ -36,7 +36,7 @@ int print_str(va_list ap)
 }
 /**
  * print_int - print an integer
- * @ap: variable list of argumnet
+ * @ap: variable list of argument
  *
  * Return: number of characters printed
  */
@@ -53,5 +53,22 @@ int print_int(va_list ap)
 	}
 
 	n += print_number(t1);
+	return (n);
+}
+/**
+ * print_binary - print an unsigned int in binary
+ * @ap: variable list of argument
+ *
+ * Return: number of characters printed
+ */
+int print_binary(va_list ap)
+{
+	int n = 0;
+	unsigned int t2 = va_arg(ap, unsigned int);
+
+	if (t2 <= 1)
+		return (_putchar(t2 + '0'));
+
+	n += print_bin(t2);
 	return (n);
 }

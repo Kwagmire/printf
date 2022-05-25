@@ -13,5 +13,7 @@ int check_conversion(char c, va_list ap);
 int print_char(va_list ap);
 int print_str(va_list ap);
 int print_int(va_list ap);
+int print_binary(va_list ap);
+int print_bin(unsigned int num);
 
 #endif
