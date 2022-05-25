@@ -36,7 +36,7 @@ int print_bin(unsigned int num)
 	int n = 0;
 
 	if (num / 2 > 0)
-		n += print_bin(n / 2);
+		n += print_bin(num / 2);
 	n += _putchar((num % 2) + '0');
 	return (n);
 }
