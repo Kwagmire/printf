@@ -52,23 +52,27 @@ int print_int(va_list ap)
 		t1 *= -1;
 	}
 
-	n += print_number(t1);
+	n += print_number((unsigned int)t1, 10);
 	return (n);
 }
 /**
- * print_binary - print an unsigned int in binary
+ * print_bouxX - for binary, octal and uint
  * @ap: variable list of argument
+ * @c: the specifier
  *
  * Return: number of characters printed
  */
-int print_binary(va_list ap)
+int print_bouxX(va_list ap, char c)
 {
 	int n = 0;
 	unsigned int t2 = va_arg(ap, unsigned int);
 
-	if (t2 <= 1)
-		return (_putchar(t2 + '0'));
+	if (c == 'b')
+		n += print_number(t2, 2);
+	else if (c == 'u')
+		n += print_number(t2, 10);
+	else if (c == 'o')
+		n += print_number(t2, 8);
 
-	n += print_bin(t2);
 	return (n);
 }

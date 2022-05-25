@@ -20,8 +20,12 @@ int check_conversion(char c, va_list ap)
 		n += _putchar('%');
 	else if (c == 'd' || c == 'i')
 		n += print_int(ap);
-	else if (c == 'b')
-		n += print_binary(ap);
+	else if ((c == 'o') ||
+		 (c == 'u') ||
+		 (c == 'x') ||
+		 (c == 'X') ||
+		 (c == 'b'))
+		n += print_bouxX(ap, c);
 	else
 	{
 		_putchar('%');
