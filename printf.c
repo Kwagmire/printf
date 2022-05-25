@@ -22,9 +22,9 @@ int check_conversion(char c, va_list ap)
 		n += print_int(ap);
 	else if ((c == 'o') ||
 		 (c == 'u') ||
+		 (c == 'b') ||
 		 (c == 'x') ||
-		 (c == 'X') ||
-		 (c == 'b'))
+		 (c == 'X'))
 		n += print_bouxX(ap, c);
 	else
 	{

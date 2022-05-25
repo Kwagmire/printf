@@ -26,3 +26,29 @@ int print_number(unsigned int num, int base)
 	n += _putchar((num % base) + '0');
 	return (n);
 }
+/**
+ * print_hexa - for hexa
+ * @ap: variable list of argument
+ * @c: the specifier
+ *
+ * Return: the number of characters printed
+ */
+int print_hexa(unsigned int num, char c)
+{
+	int n = 0;
+	unsigned int j = num % 16;
+	
+	if (num / 16 > 0)
+		n += print_hexa(num / 16, c);
+	if (j > 9)
+	{
+		if (c == 'x')
+			n += _putchar((j - 10) + 'a');
+		else
+			n += _putchar((j - 10) + 'A');
+	}
+	else
+		n += _putchar((num % 16) + '0');
+	
+	return (n);
+}

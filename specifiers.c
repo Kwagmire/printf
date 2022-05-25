@@ -73,6 +73,8 @@ int print_bouxX(va_list ap, char c)
 		n += print_number(t2, 10);
 	else if (c == 'o')
 		n += print_number(t2, 8);
+	else if (c == 'x' || c == 'X')
+		n += print_hexa(t2, c);
 
 	return (n);
 }
