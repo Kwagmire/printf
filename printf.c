@@ -13,10 +13,11 @@ int check_conversion(char c, va_list ap)
 	int n = 0;
 
 	if (c == 'c')
-		n += print_char(ap);
+		n += _putchar(va_arg(ap, int));
 	else if ((c == 's') ||
 		 (c == 'S') ||
-		 (c == 'r'))
+		 (c == 'r') ||
+		 (c == 'R'))
 		n += print_str(ap, c);
 	else if (c == '%')
 		n += _putchar('%');

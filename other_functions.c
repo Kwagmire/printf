@@ -1,16 +1,6 @@
 #include "main.h"
 
 /**
- * _putchar - print to standard output
- * @c: what to print
- *
- * Return: 0 or -1
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-/**
  * print_number - print a number
  * @num: the number
  * @base: the base to print it in
@@ -100,6 +90,45 @@ int print_rev(char *s)
 
 	for (; len >= 1; len--)
 		n += _putchar(s[len - 1]);
+
+	return (n);
+}
+/**
+ * rot13 - encode string using rot13
+ * @str: the string to be manipulated
+ *
+ * Return: resultant string
+ */
+int rot13(char *str)
+{
+	int i = 0, n = 0;
+
+	while (str[i])
+	{
+		while (
+				(str[i] >= 'a' &&
+				 str[i] <= 'z') ||
+				(str[i] >= 'A' &&
+				 str[i] <= 'Z')
+		      )
+		{
+			if (
+					(str[i] >= 'n' &&
+					 str[i] <= 'z') ||
+					(str[i] >= 'N' &&
+					 str[i] <= 'Z')
+			   )
+				n += _putchar(str[i] - 13);
+			else
+				n += _putchar(str[i] + 13);
+			i++;
+		}
+		if (str[i])
+		{
+			n += _putchar(str[i]);
+			i++;
+		}
+	}
 
 	return (n);
 }

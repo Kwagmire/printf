@@ -4,14 +4,14 @@
 #include <stdarg.h>
 
 /**
- * print_char - print a character
- * @ap: variable list of argument
+ * _putchar - print a character
+ * @c: the character
  *
  * Return: 1
  */
-int print_char(va_list ap)
+int _putchar(char c)
 {
-	return (_putchar(va_arg(ap, int)));
+	return (write(1, &c, 1));
 }
 /**
  * print_str - print a string
@@ -39,6 +39,8 @@ int print_str(va_list ap, char c)
 		n += print_Str(t0);
 	else if (c == 'r')
 		n += print_rev(t0);
+	else if (c == 'R')
+		n += rot13(t0);
 
 	return (n);
 }
