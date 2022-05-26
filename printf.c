@@ -14,7 +14,9 @@ int check_conversion(char c, va_list ap)
 
 	if (c == 'c')
 		n += print_char(ap);
-	else if (c == 's' || c == 'S')
+	else if ((c == 's') ||
+		 (c == 'S') ||
+		 (c == 'r'))
 		n += print_str(ap, c);
 	else if (c == '%')
 		n += _putchar('%');

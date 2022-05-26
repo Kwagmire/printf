@@ -27,8 +27,8 @@ int print_number(unsigned int num, int base)
 	return (n);
 }
 /**
- * print_hexa - for hexa
- * @ap: variable list of argument
+ * print_hexa - print in hexadecimal
+ * @num: the number
  * @c: the specifier
  *
  * Return: the number of characters printed
@@ -37,7 +37,7 @@ int print_hexa(unsigned int num, char c)
 {
 	int n = 0;
 	unsigned int j = num % 16;
-	
+
 	if (num / 16 > 0)
 		n += print_hexa(num / 16, c);
 	if (j > 9)
@@ -49,7 +49,7 @@ int print_hexa(unsigned int num, char c)
 	}
 	else
 		n += _putchar((num % 16) + '0');
-	
+
 	return (n);
 }
 /**
@@ -71,7 +71,7 @@ int print_Str(char *str)
 
 			ascode = (int)*str;
 			n += _putchar((ascode / 16) + '0');
-			
+
 			if (ascode % 16 > 9)
 				n += _putchar(((ascode % 16) - 10) + 'A');
 			else
@@ -82,6 +82,24 @@ int print_Str(char *str)
 
 		str++;
 	}
+
+	return (n);
+}
+/**
+ * print_rev - print a string in reverse
+ * @s: the string
+ *
+ * Return: the number of characters printed
+ */
+int print_rev(char *s)
+{
+	int len, n = 0;
+
+	for (len = 0; s[len];)
+		len++;
+
+	for (; len >= 1; len--)
+		n += _putchar(s[len - 1]);
 
 	return (n);
 }

@@ -16,5 +16,6 @@ int print_int(va_list ap);
 int print_bouxX(va_list ap, char c);
 int print_hexa(unsigned int num, char c);
 int print_Str(char *str);
+int print_rev(char *s);
 
 #endif

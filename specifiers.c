@@ -37,6 +37,8 @@ int print_str(va_list ap, char c)
 	}
 	else if (c == 'S')
 		n += print_Str(t0);
+	else if (c == 'r')
+		n += print_rev(t0);
 
 	return (n);
 }
