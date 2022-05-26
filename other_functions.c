@@ -52,3 +52,36 @@ int print_hexa(unsigned int num, char c)
 	
 	return (n);
 }
+/**
+ * print_Str - print a string and non printable should be in hex
+ * @str: the string
+ *
+ * Return: the number of characters printed
+ */
+int print_Str(char *str)
+{
+	int n = 0, ascode;
+
+	while (*str)
+	{
+		if (*str < 32 || *str >= 127)
+		{
+			n += _putchar('\\');
+			n += _putchar('x');
+
+			ascode = (int)*str;
+			n += _putchar((ascode / 16) + '0');
+			
+			if (ascode % 16 > 9)
+				n += _putchar(((ascode % 16) - 10) + 'A');
+			else
+				n += _putchar((ascode % 16) + '0');
+		}
+		else
+			n += _putchar(*str);
+
+		str++;
+	}
+
+	return (n);
+}

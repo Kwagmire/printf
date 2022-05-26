@@ -16,21 +16,27 @@ int print_char(va_list ap)
 /**
  * print_str - print a string
  * @ap: variable list of argument
+ * @c: the specifier
  *
  * Return: number of characters printed
  */
-int print_str(va_list ap)
+int print_str(va_list ap, char c)
 {
 	int n  = 0;
 	char *t0 = va_arg(ap, char *);
 
 	if (t0 == NULL)
 		t0 = "(null)";
-	while (*t0)
+	if (c == 's')
 	{
-		n += _putchar(*t0);
-		t0++;
+		while (*t0)
+		{
+			n += _putchar(*t0);
+			t0++;
+		}
 	}
+	else if (c == 'S')
+		n += print_Str(t0);
 
 	return (n);
 }
@@ -43,7 +49,7 @@ int print_str(va_list ap)
 int print_int(va_list ap)
 {
 	int n = 0;
-	long t1 = (long)va_arg(ap, int);
+	int t1 = va_arg(ap, int);
 
 	if (t1 < 0)
 	{
@@ -52,7 +58,7 @@ int print_int(va_list ap)
 		t1 *= -1;
 	}
 
-	n += print_number((unsigned int)t1, 10);
+	n += print_number(t1, 10);
 	return (n);
 }
 /**
